@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link, Outlet, useLocation, Navigate, useNavigate } from "react-router-dom"
 
-import AdminLogin from "../Test/AdminLogin/AdminLogin"
+import AdminLogin from "../Components/AdminLogin/AdminLogin"
 import styles from "./AdminPage.module.css"
 
 const AdminPage = () => {
