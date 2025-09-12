@@ -10,7 +10,7 @@ const Hyang1Page = () => {
 
   return (
     <>
-      <h2 className={hyang1PageStyle["cafeteria-name"]}>향설생활관1</h2>
+      <h2 className={hyang1PageStyle["cafeteria-name"]}>develop</h2>
       <h3 className={hyang1PageStyle["date-text"]}>{formatted}</h3>
       <TodayMenu/>
     </>
