@@ -1,0 +1,116 @@
+.img{
+    width: 25 0px;
+    height: 300px;
+}
+.HeadText{
+    /* color: red; */
+    margin: auto;
+    padding: 20px 0px;
+    /* border-bottom: 1px solid black; */
+
+    /* color: rgb(255, 255, 255); */
+    background-color: #5090ff;
+}
+
+.previousBtn {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    /* color: white; */
+}
+
+.cntH {
+    font-size: 20px;
+    color: rgb(106, 106, 106);
+}
+
+.cntV {
+    font-size: 37px;
+    color: rgb(0, 0, 0);
+}
+
+.alert {
+    font-size: 25px;
+}
+
+.cnt-div1 {
+
+}
+
+.stock1,
+.wait1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+
+.cnt-div2 {
+    /* display: flex; */
+    justify-content: center;
+    /* align-items: ; */
+}
+
+.stock2,
+.wait2 {
+    display: flex;
+    flex-direction: column;    
+    padding: 15px;
+}
+
+
+.cnt-div3 {
+    /* display: flex; */
+    margin-top: 10px;
+}
+
+.cnt-div3 > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stock3,
+.wait3 {
+    display: flex;
+    flex-direction: column;    
+    padding: 30px;
+}
+
+.stock3 {
+    /* border-right: 1px solid rgb(172, 172, 172); */
+}
+
+.closedDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    margin-top: 50px;
+}
+
+.closedMessage {
+    text-align: center;
+    background-color: #f8f9fa;
+    border: 2px solid #dc3545;
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+}
+
+.closedMessage h2 {
+    color: #dc3545;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.closedMessage p {
+    color: #6c757d;
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    line-height: 1.5;
+}
+
