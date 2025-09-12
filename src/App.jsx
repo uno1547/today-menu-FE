@@ -1,20 +1,20 @@
 import { BrowserRouter as Router, Routes, Route, Outlet, Navigate} from 'react-router-dom'
 
-import Navbar from "./components/Navbar/Navbar"
-import Footer from "./components/Footer/Footer"
+import Navbar from "./Components/Navbar/Navbar.jsx"
+import Footer from "./Components/Footer/Footer.jsx"
+import Hyang1Page from "./pages/Hyang1Page.jsx"
+
+import RestaurantPage from './pages/RestaurantPage.jsx'
+import KioskPage from './pages/KioskPage.jsx'
+import StorePage from './pages/StorePage.jsx'
+import CurrentInfoPage from './pages/CurrentInfoPage.jsx'
 import AdminPage from './pages/AdminPage.jsx'
 import BreakfastManagement from './pages/admin/BreakfastManagement.jsx'
 import MenuManagement from './pages/admin/MenuManagement.jsx'
-import HomePage from "./pages/Homepage"
-import Hyang1 from "./pages/Hyang1Page.jsx"
-import RestaurantPage from './pages/RestaurantPage.jsx'
-import StorePage from './pages/StorePage.jsx'
-import KioskPage from './pages/KioskPage.jsx'
-import CurrentInfoPage from './pages/CurrentInfoPage.jsx'
 
 import "./App.css"
 import style from "./App.module.css"
-import EnqueuePage from './pages/EnqueuePage.jsx'
+
 function App() {  
   return (
     <Router>
@@ -28,8 +28,8 @@ function App() {
             <Footer/>
           </>
         }>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/restaurants/h1' element={<Hyang1 />} />
+          <Route path='/' element={<Navigate to="/restaurants/h1" replace />} />
+          <Route path='/restaurants/h1' element={<Hyang1Page/>} />
           <Route path='/restaurants/:restaurant' element={<RestaurantPage />} />
         </Route>
         <Route element = {
@@ -37,10 +37,8 @@ function App() {
             <Outlet/>
           </div>
         }>
-          <Route path='/enqueue' element={<EnqueuePage/>}></Route>
           <Route path='/kiosk' element = {<KioskPage/>}></Route>
         </Route>
-          {/* <Route path='*' element = {<Navigate to={"/"}/>}></Route> */}
         <Route path='/restaurants/:restaurant/:store' element = {<StorePage/>}></Route>
         <Route path='/restaurants/h1/current-info' element = {<CurrentInfoPage/>}></Route>
         <Route path='/admin' element={<AdminPage/>}>

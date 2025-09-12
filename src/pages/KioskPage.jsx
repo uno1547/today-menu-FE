@@ -1,5 +1,5 @@
 import { useState } from "react"
-import Button from "../components/Button/Button"
+import Button from "../Components/Button/Button"
 import style from "./KioskPage.module.css"
 
 const KioskPage = () => {

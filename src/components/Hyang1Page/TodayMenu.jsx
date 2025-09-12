@@ -14,7 +14,7 @@ const dummyData = {
 const TodayMenu = () => {
   const [datas, setDatas] = useState({})
   const [timeIdx, setTimeIdx] = useState(0)
-  console.log(timeIdx);
+  // console.log(timeIdx);
   const getTodayMenu = async () => {
     try {
       const response = await fetch("http://localhost:8080/restaurants/h1/today-menus")
@@ -36,7 +36,7 @@ const TodayMenu = () => {
     }
   }
   useEffect(() => {
-    console.log('데이터불러오기!!');
+    // console.log('데이터불러오기!!');
     // getTodayMenu()
 
     //// 테스트용 더미데이터 얘 주석처리하고 위에 getTodayMenu로 
@@ -62,7 +62,7 @@ const TodayMenu = () => {
       {datas["아침"] && (timeIdx == 0) && <Link to="current-info" style={{fontWeight : "bold", color : "#e72626", padding : "5px"}}>실시간 수량보러가기</Link>}
       {/* {datas["아침"] && (timeIdx == 0) && <Link to="current-info" style={{fontWeight : "bold", color : "#e72626", padding : "5px"}}>천원의 아침밥</Link>} */}
       <div className={style.monthText}>
-        <Link>이번달 식단표 보러가기</Link>
+        {/* <Link>이번달 식단표 보러가기</Link> */}
       </div>
     </div>
   )

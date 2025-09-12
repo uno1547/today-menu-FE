@@ -3,8 +3,6 @@ import style from "./Navbar.module.css"
 
 const Navbar = () => {
   const location =useLocation();
-  console.log(location.pathname);
-  
   return (
     // <div>
     //   {/* 여기 네비게이션 바 컴포넌트 만들어줘 Link 찾아봐서 router에서 어캐 쓰는지 */}

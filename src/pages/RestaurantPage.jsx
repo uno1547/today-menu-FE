@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {useParams} from "react-router-dom";
 
-import Store from "../components/RestaurantPage/Store";
+import Store from "../Components/RestaurantPage/Store.jsx";
 
 import restaurantStyle from "./RestaurantPage.module.css"
 
@@ -18,9 +18,6 @@ const data = [
   {name : "크앙분식", url : '크앙사진경로', b : "h2"},
   {name : "노량진컵밥", url : '노량진사진경로', b : "h2"},
   {name : "라면집", url : '라면사진경로', b : "h3"},
-  // {name : "", url : '', b : "h3"},
-  // {name : "", url : '', b : "h3"},
-  // {name : "", url : '', b : "h3"},
   {name : "홍대쌀국수", url : '홍대쌀국수사진경로', b : "student-hall"},
   {name : "카레가게", url : '카레사진경로', b : "student-hall"},
   {name : "돈까스학생회관점", url : '돈까스집사진경로', b : "student-hall"},
@@ -31,14 +28,14 @@ const data = [
 ]
 
 const RestaurantPage = () => {
-  console.log('레스토랑 렌더링!');
+  // console.log('레스토랑 렌더링!');
   const [stores,setStores]=useState([]);
   const {restaurant} = useParams();
   const [error,setError] =useState(null)
  
  
   // console.log(restaurant+"의 식당입니다.");
-  console.log(name[restaurant]);
+  // console.log(name[restaurant]);
   useEffect(()=>{
   
   const fetchData = async ()=>{
@@ -58,7 +55,7 @@ const RestaurantPage = () => {
 
   ////// 더미데이터로테스트용 나중에 지우고 위에 fetchData()만 주석해제해주면됌
   const storesList = data.filter(store => store.b == restaurant)
-  console.log(storesList);
+  // console.log(storesList);
   setStores(storesList)
   // //////
   }, [restaurant])

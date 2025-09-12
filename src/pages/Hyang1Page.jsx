@@ -1,7 +1,7 @@
-import TodayMenu from "../components/Hyang1/TodayMenu"
+import TodayMenu from "../Components/Hyang1Page/TodayMenu"
 import hyang1PageStyle from "./Hyang1Page.module.css"
 
-const Hyang1 = () => {
+const Hyang1Page = () => {
   const today = new Date()
   const year = today.getFullYear();         // 2025
   const month = today.getMonth() + 1;       // 4 (주의: 0부터 시작함)
@@ -17,4 +17,4 @@ const Hyang1 = () => {
   )
 }
 
-export default Hyang1
+export default Hyang1Page
