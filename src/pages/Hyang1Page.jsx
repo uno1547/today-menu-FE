@@ -1,4 +1,4 @@
-import TodayMenu from "../Components/Hyang1Page/TodayMenu"
+import TodayMenu from "../Test/Hyang1Page/TodayMenu"
 import hyang1PageStyle from "./Hyang1Page.module.css"
 
 const Hyang1Page = () => {

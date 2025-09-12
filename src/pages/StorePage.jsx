@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 
-import Menu from "../Components/StoresPage/Menu"
+import Menu from "../Test/StoresPage/Menu"
 import storePageStyle from "./StorePage.module.css"
 
 const menusData = [
