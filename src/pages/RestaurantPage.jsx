@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {useParams} from "react-router-dom";
 
-import Store from "../Components/RestaurantPage/Store.js";
+import Store from "../Components/RestaurantPage/Store.jsx";
 
 import restaurantStyle from "./RestaurantPage.module.css"
 
