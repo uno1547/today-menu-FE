@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Outlet, Navigate} from 'react-router-dom'
 
 import Navbar from "./Components/Navbar/Navbar.jsx"
-import Footer from "./Components/Footer/Footer.js"
+import Footer from "./Components/Footer/Footer.jsx"
 import Hyang1Page from "./pages/Hyang1Page.jsx"
 
 import RestaurantPage from './pages/RestaurantPage.jsx'
