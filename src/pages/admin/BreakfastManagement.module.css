@@ -24,6 +24,7 @@
 .sellingControl h3 {
   color: #333;
   margin-bottom: 1rem;
+  text-align: left;
 }
 
 .startSellingSection {
@@ -58,7 +59,7 @@
 
 .stopSellingSection {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 }
 

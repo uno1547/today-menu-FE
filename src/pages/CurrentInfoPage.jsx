@@ -3,52 +3,44 @@ import { useNavigate } from "react-router-dom";
 // import ricepan from "../../../img/천밥.png";
 import style from "./CurrentInfo.module.css";
 
-import SockJS from "sockjs-client";
-import { Client } from "@stomp/stompjs";
+import { io } from "socket.io-client";
 
 const CurrentInfoPage = () => {
+  const [socket, setSocket] = useState(null);
+  const [messages, setMessages] = useState([]);
+
   const [quantity, setQuantity] = useState(0);
   const [waitCnt, setWaitCnt] = useState(0)
   const [isSellingActive, setIsSellingActive] = useState(false)
 
   const navigate = useNavigate()
 
+  const connectSocket = () => {
+    const newSocket = io("http://localhost:3000", {
+      transports: ["websocket"],
+    });
+    setSocket(newSocket);
+    newSocket.on("connect", () => {
+      console.log("✅ 소켓 연결됨:", newSocket.id);
+    });
+
+    newSocket.on("stock-update", (count) => {
+      setQuantity(count);
+      // setMessages((prev) => [...prev, `재고: ${count}`]);
+    });
+
+    newSocket.on("sale-ended", (msg) => {
+      // setMessages((prev) => [...prev, msg]);
+      newSocket.disconnect();
+    });
+
+  };
+
   useEffect(() => {
-    // 판매 상태 확인
-    const sellingStatus = localStorage.getItem('breakfastSellingActive')
-    setIsSellingActive(sellingStatus === 'true')
-
-    // 판매 중일 때만 WebSocket 연결
-    if (sellingStatus === 'true') {
-      const client = new Client({
-        // 백엔드의 STOMP 엔드포인트 (SockJS로 연결됨)
-        webSocketFactory: () => new SockJS("http://localhost:8080/websocket"),
-        onConnect: () => {
-          console.log("STOMP 연결 성공");
-
-          // 백엔드에서 설정한 구독 경로에 맞게 수정해야 함
-          client.subscribe("/topic/stock", (message) => {
-            const data = JSON.parse(message.body);
-            if(data.stock !== undefined && data.stock !== null) setQuantity(data.stock)
-            if(data.count !== undefined && data.count !== null) setWaitCnt(data.count)
-            // setQuantity(data.stock);
-          });
-          client.publish({
-            destination: "/app/get-stock",
-          });
-        },
-        onStompError: (frame) => {
-          console.error("STOMP 오류", frame);
-        },
-      });
-
-      client.activate();
-
-      // cleanup
-      return () => {
-        client.deactivate();
-      };
-    }
+    // 컴포넌트가 마운트될 때 소켓 연결
+    console.log('effect');
+    connectSocket();
+    // setIsSellingActive(true) // 실제로는 서버에서 판매 상태 받아와야 함
   }, []);
 
   return (

@@ -12,6 +12,8 @@ import AdminPage from './pages/AdminPage.jsx'
 import BreakfastManagement from './pages/admin/BreakfastManagement.jsx'
 import MenuManagement from './pages/admin/MenuManagement.jsx'
 
+import TestPage from './pages/TestPage.jsx'
+
 import "./App.css"
 import style from "./App.module.css"
 
@@ -45,6 +47,8 @@ function App() {
           <Route path='breakfast' element={<BreakfastManagement/>} />
           <Route path='menus' element={<MenuManagement/>} />
         </Route>
+        <Route path='/test' element={<TestPage/>}></Route>
+           
       </Routes>           
     </Router>
   )

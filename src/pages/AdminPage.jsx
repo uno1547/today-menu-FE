@@ -13,21 +13,18 @@ const AdminPage = () => {
   // 컴포넌트 마운트 시 localStorage에서 로그인 상태 확인
   useEffect(() => {
     const savedLoginState = localStorage.getItem('adminLoggedIn')
-    if (savedLoginState === 'true') {
+    if (savedLoginState) {
       setIsLoggedIn(true)
     }
-  }, [])
+  }, []) // 얘는 첫 마운트 때를 위한 토큰 확인
 
-  const handleLogin = (formData) => {
+  const handleLogin = async (formData) => {
     // 간단한 시뮬레이션을 위한 더미 로그인 로직
     console.log('로그인 시도:', formData)
     
-    // 실제로는 여기서 서버에 요청을 보내고 JWT 토큰을 받아야 함
-    // 지금은 시뮬레이션을 위해 바로 로그인 성공 처리
     setIsLoggedIn(true)
     localStorage.setItem('adminLoggedIn', 'true')
-    
-    // 실제 구현 예시:
+    // // 실제 구현 예시:
     // try {
     //   const response = await fetch('/api/admin/login', {
     //     method: 'POST',
@@ -37,7 +34,7 @@ const AdminPage = () => {
     //   const data = await response.json()
     //   if (data.token) {
     //     localStorage.setItem('adminToken', data.token)
-    //     localStorage.setItem('adminLoggedIn', 'true')
+    //     // localStorage.setItem('adminLoggedIn', 'true')
     //     setIsLoggedIn(true)
     //   }
     // } catch (error) {

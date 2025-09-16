@@ -13,17 +13,57 @@ const BreakfastManagement = () => {
     }
   }, [])
 
-  const handleStartSelling = () => {
+  const connectSocket = () => {
+    const newSocket = io("http://localhost:3000");
+
+    newSocket.on("connect", () => {
+      console.log("✅ 소켓 연결됨:", newSocket.id);
+    });
+
+    newSocket.on("stock-update", (count) => {
+      setStock(count);
+      setMessages((prev) => [...prev, `재고: ${count}`]);
+    });
+
+    newSocket.on("sale-ended", (msg) => {
+      setMessages((prev) => [...prev, msg]);
+      newSocket.disconnect();
+    });
+
+    setSocket(newSocket);
+  };
+
+  const handleStartSelling = async () => {
     if (!sellQuantity || sellQuantity <= 0) {
       alert('판매 수량을 입력해주세요.')
       return
     }
     
-    // 실제로는 서버에 POST 요청
+    //////////////////// 실제로는 서버에 POST 요청
+    /*
     localStorage.setItem('breakfastSellingActive', 'true')
     localStorage.setItem('breakfastSellQuantity', sellQuantity)
     setIsSellingActive(true)
     setSellQuantity('')
+    */
+    //////////////////////////
+    try {
+      const response = await fetch('/api/admin/start-breakfast', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ quantity: sellQuantity })
+      })
+      const data = await response.json() // 굳이 cnt를 받아야해?
+      // 그냥 소켓 연결하면 수량 알수있잖어
+      // se
+      if (response.ok) {
+
+      } 
+    } catch (error) {
+      console.error('판매 시작 실패:', error)
+      return
+    }
+
     
     console.log(`판매 시작: ${sellQuantity}개`)
   }
@@ -39,8 +79,8 @@ const BreakfastManagement = () => {
 
   return (
     <div className={styles.container}>
-      <h2>천원의 아침밥 관리</h2>
-      <p>천원의 아침밥 메뉴와 관련된 관리 기능들입니다.</p>
+      {/* <h2>천원의 아침밥 관리</h2>
+      <p>천원의 아침밥 메뉴와 관련된 관리 기능들입니다.</p> */}
       
       <div className={styles.sellingControl}>
         <h3>판매 상태 관리</h3>
@@ -85,7 +125,7 @@ const BreakfastManagement = () => {
         )}
       </div>
       
-      <div className={styles.actions}>
+      {/* <div className={styles.actions}>
         <button className={styles.actionBtn}>메뉴 수정</button>
         <button className={styles.actionBtn}>재고 관리</button>
         <button className={styles.actionBtn}>주문 현황</button>
@@ -110,7 +150,7 @@ const BreakfastManagement = () => {
             <p>재고: 20개</p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
