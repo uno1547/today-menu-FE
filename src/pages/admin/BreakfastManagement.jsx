@@ -22,11 +22,13 @@ const BreakfastManagement = () => {
 
     newSocket.on("stock-update", (count) => {
       setStock(count);
-      setMessages((prev) => [...prev, `재고: ${count}`]);
+      // setMessages((prev) => [...prev, `재고: ${count}`]);
     });
 
-    newSocket.on("sale-ended", (msg) => {
-      setMessages((prev) => [...prev, msg]);
+    newSocket.on("sale-ended", (data) => {
+      // setMessages((prev) => [...prev, msg]);
+      const { isSelling } = data;
+      setIsSellingActive(isSelling)
       newSocket.disconnect();
     });
 
@@ -48,16 +50,17 @@ const BreakfastManagement = () => {
     */
     //////////////////////////
     try {
-      const response = await fetch('/api/admin/start-breakfast', {
+      console.log(JSON.stringify({ quantity: sellQuantity }));
+      const response = await fetch('http://localhost:3000/api/admin/start-breakfast', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ quantity: sellQuantity })
       })
-      const data = await response.json() // 굳이 cnt를 받아야해?
+      // const data = await response.json() // 굳이 cnt를 받아야해?
       // 그냥 소켓 연결하면 수량 알수있잖어
       // se
       if (response.ok) {
-
+        setIsSellingActive(true)
       } 
     } catch (error) {
       console.error('판매 시작 실패:', error)
@@ -68,10 +71,17 @@ const BreakfastManagement = () => {
     console.log(`판매 시작: ${sellQuantity}개`)
   }
 
-  const handleStopSelling = () => {
+  const handleStopSelling = async () => {
     // 실제로는 서버에 POST 요청
-    localStorage.setItem('breakfastSellingActive', 'false')
-    localStorage.removeItem('breakfastSellQuantity')
+    // localStorage.setItem('breakfastSellingActive', 'false')
+    // localStorage.removeItem('breakfastSellQuantity')
+    const response = await fetch('/api/admin/stop-breakfast', {
+      method: 'POST'
+    })
+    if (!response.ok) {
+      console.error('판매 종료 실패')
+      return
+    }
     setIsSellingActive(false)
     
     console.log('판매 종료')

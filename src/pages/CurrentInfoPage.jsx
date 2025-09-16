@@ -7,7 +7,7 @@ import { io } from "socket.io-client";
 
 const CurrentInfoPage = () => {
   const [socket, setSocket] = useState(null);
-  const [messages, setMessages] = useState([]);
+  // const [messages, setMessages] = useState([]);
 
   const [quantity, setQuantity] = useState(0);
   const [waitCnt, setWaitCnt] = useState(0)
@@ -16,16 +16,24 @@ const CurrentInfoPage = () => {
   const navigate = useNavigate()
 
   const connectSocket = () => {
-    const newSocket = io("http://localhost:3000", {
-      transports: ["websocket"],
-    });
-    setSocket(newSocket);
+    const newSocket = io("http://localhost:3000");
+    // setSocket(newSocket);
     newSocket.on("connect", () => {
       console.log("✅ 소켓 연결됨:", newSocket.id);
     });
 
+    newSocket.on("sale-started", (data) => {
+      const { sellQuantity, waitCount } = data;
+      setQuantity(sellQuantity);
+      setWaitCnt(waitCount)
+      setIsSellingActive(true)
+    });
+
     newSocket.on("stock-update", (count) => {
-      setQuantity(count);
+      const {sellQuantity, isSelling} = count
+      console.log(sellQuantity, isSelling);
+      setQuantity(sellQuantity);
+      setIsSellingActive(isSelling)
       // setMessages((prev) => [...prev, `재고: ${count}`]);
     });
 
@@ -40,6 +48,7 @@ const CurrentInfoPage = () => {
     // 컴포넌트가 마운트될 때 소켓 연결
     console.log('effect');
     connectSocket();
+    // 소켓연결하면서 재고량 판매상태 받아온 걸 state로 업데이트 해야하나?
     // setIsSellingActive(true) // 실제로는 서버에서 판매 상태 받아와야 함
   }, []);
 
@@ -54,7 +63,8 @@ const CurrentInfoPage = () => {
           <div>
             <div className={style.stock3}>
               <span className={style.cntH}>잔여 수량</span>
-              <span className = {style.cntV}>{`${quantity ? quantity : 50} / 100 개`}</span>
+              <span className = {style.cntV}>{`${quantity}`}</span>
+              {/* <span className = {style.cntV}>{`${quantity ? quantity : 50} / 100 개`}</span> */}
             </div>
             <div className={style.wait3}>
               <span className={style.cntH}>대기 인원 수</span>

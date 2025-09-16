@@ -20,7 +20,7 @@ const KioskPage = () => {
     */
 
     try {
-      const paymentRequest = await fetch("http://localhost:8080/payment", {
+      const paymentRequest = await fetch("http://localhost:3000/api/purchase", {
         method : "POST"
       })
 
