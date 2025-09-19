@@ -123,7 +123,7 @@ const BreakfastManagement = () => {
           <div className={styles.stopSellingSection}>
             <div className={styles.statusInfo}>
               <span className={styles.statusIndicator}>🟢 판매 중</span>
-              <span>현재 천원의 아침밥을 판매하고 있습니다.</span>
+              <span className={styles.statusMessage}>현재 천원의 아침밥을 판매하고 있습니다.</span>
             </div>
             <button 
               onClick={handleStopSelling}

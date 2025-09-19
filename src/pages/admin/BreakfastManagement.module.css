@@ -29,7 +29,7 @@
 
 .startSellingSection {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   gap: 1rem;
 }
 
@@ -59,7 +59,7 @@
 
 .stopSellingSection {
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -73,6 +73,15 @@
   font-weight: bold;
   color: #28a745;
   font-size: 1.1rem;
+  text-align: left;
+  padding: 0;
+}
+
+.statusMessage {
+  /* color: #666; */
+  /* font-size: 0.9rem; */
+  /* text-align: left; */
+  padding: 10px 0px;
 }
 
 .startBtn {

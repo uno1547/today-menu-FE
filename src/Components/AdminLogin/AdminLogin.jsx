@@ -20,7 +20,8 @@ const AdminLogin = ({ onLogin }) => {
     
     // 부모 컴포넌트의 onLogin 함수 호출
     if (onLogin) {
-      onLogin(formData)
+      // onLogin(formData)
+      onLogin()
     }
   }
 
