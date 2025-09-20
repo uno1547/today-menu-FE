@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styles from './StartSellingBox.module.css'
+const API_BASE_URL = import.meta.env.VITE_API_URL
 const StartSellingBox = ({ onSellingStart }) => {
   const [sellQuantity, setSellQuantity] = useState(0)
 
@@ -9,7 +10,7 @@ const StartSellingBox = ({ onSellingStart }) => {
       return
     }
     try {
-      const response = await fetch('https://hyang-cafeteria-server.onrender.com/api/admin/start-breakfast', {
+      const response = await fetch(`${API_BASE_URL}/api/admin/start-breakfast`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

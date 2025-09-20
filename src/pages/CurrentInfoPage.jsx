@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import ricepan from "../../../img/천밥.png";
 import style from "./CurrentInfo.module.css";
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL
 
 import { io } from "socket.io-client";
 
@@ -15,7 +16,7 @@ const CurrentInfoPage = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const newSocket = io("https://hyang-cafeteria-server.onrender.com", {
+    const newSocket = io(SOCKET_URL, {
       transports: ['websocket'], // 웹소켓 전용
     });
     newSocket.on("connect", () => {
