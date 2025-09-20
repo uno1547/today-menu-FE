@@ -9,7 +9,7 @@ const StartSellingBox = ({ onSellingStart }) => {
       return
     }
     try {
-      const response = await fetch('http://localhost:3000/api/admin/start-breakfast', {
+      const response = await fetch('https://hyang-cafeteria-server.onrender.com/api/admin/start-breakfast', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
