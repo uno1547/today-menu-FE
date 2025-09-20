@@ -6,69 +6,79 @@ import style from "./CurrentInfo.module.css";
 import { io } from "socket.io-client";
 
 const CurrentInfoPage = () => {
-  const [socket, setSocket] = useState(null);
-  // const [messages, setMessages] = useState([]);
-
-  const [quantity, setQuantity] = useState(0);
-  const [waitCnt, setWaitCnt] = useState(0)
-  const [isSellingActive, setIsSellingActive] = useState(false)
+  const [totalQuantity, setTotalQuantity] = useState(0);
+  const [curCnt, setCurCnt] = useState(0);
+  const [waitCnt, setWaitCnt] = useState(0);
+  const [isSellingActive, setIsSellingActive] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate()
 
-  const connectSocket = () => {
+  useEffect(() => {
     const newSocket = io("http://localhost:3000");
-    // setSocket(newSocket);
     newSocket.on("connect", () => {
       console.log("✅ 소켓 연결됨:", newSocket.id);
+      setIsLoading(false);
     });
 
-    newSocket.on("sale-started", (data) => {
-      const { sellQuantity, waitCount } = data;
-      setQuantity(sellQuantity);
-      setWaitCnt(waitCount)
-      setIsSellingActive(true)
+    newSocket.on("sale-status", (data) => {
+      const { sellQuantity, currentQuantity, isSelling } = data;
+      console.log(sellQuantity, currentQuantity, isSelling);
+      if(!isSelling) {
+        setCurCnt(0);
+        setTotalQuantity(0);
+        setWaitCnt(0);
+      }
+      setIsSellingActive(isSelling);
+      setTotalQuantity(sellQuantity);
+      setCurCnt(currentQuantity);
+      console.log("판매 상태:", isSelling);
+      // 종료 > 판매중 바뀌었을 때는 수량 초기화 안함
+
+      // 판매중 > 종료로 바뀌었을 때 수량 초기화
     });
 
     newSocket.on("stock-update", (count) => {
-      const {sellQuantity, isSelling} = count
-      console.log(sellQuantity, isSelling);
-      setQuantity(sellQuantity);
-      setIsSellingActive(isSelling)
-      // setMessages((prev) => [...prev, `재고: ${count}`]);
+      const {sellQuantity, currentQuantity } = count
+      console.log(currentQuantity, sellQuantity);
+      if(sellQuantity) {
+        setTotalQuantity(sellQuantity);
+      }
+      setCurCnt(currentQuantity);
+    })
+    newSocket.on("waitCnt-update", (count) => { // waitCnt 업데이트용 이벤트
+      const { currentWaitCnt } = count;
+      setWaitCnt(currentWaitCnt);
+      console.log("대기 인원 수:", currentWaitCnt);
     });
-
-    newSocket.on("sale-ended", (msg) => {
-      // setMessages((prev) => [...prev, msg]);
-      newSocket.disconnect();
-    });
-
-  };
-
-  useEffect(() => {
     // 컴포넌트가 마운트될 때 소켓 연결
-    console.log('effect');
-    connectSocket();
+    // console.log('effect');
+    // connectSocket();
     // 소켓연결하면서 재고량 판매상태 받아온 걸 state로 업데이트 해야하나?
     // setIsSellingActive(true) // 실제로는 서버에서 판매 상태 받아와야 함
+    return () => {
+      newSocket.disconnect();
+    }
   }, []);
 
   return (
     <>
       <h1 className={style["HeadText"]}>대기 현황</h1>
       <span className={style.previousBtn} onClick={() => {navigate(-1)}}>&lt; 돌아가기</span>
-      
-      {isSellingActive ? (
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : isSellingActive ? (
         // 판매 중일 때 기존 화면 표시
         <div className={style["cnt-div3"]}>
           <div>
             <div className={style.stock3}>
               <span className={style.cntH}>잔여 수량</span>
-              <span className = {style.cntV}>{`${quantity}`}</span>
+              <span className = {style.cntV}>{`${curCnt} / ${totalQuantity}`}</span>
               {/* <span className = {style.cntV}>{`${quantity ? quantity : 50} / 100 개`}</span> */}
             </div>
             <div className={style.wait3}>
               <span className={style.cntH}>대기 인원 수</span>
-              <span className = {style.cntV}>{`${waitCnt ? waitCnt : 5} 명`}</span>
+              <span className = {style.cntV}>{`${waitCnt ? waitCnt : 0} 명`}</span>
             </div>
           </div>
         </div>

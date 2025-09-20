@@ -37,6 +37,9 @@ const SellingStatusBox = ({ onStopSelling }) => {
     });
     // 클라는 최초 수량 받는거랑 이후의 업데이트에 대해서 수량 push받으면된다.
     newSocket.on("stock-update", count => {
+      // 서버는 최초연결할때 "stock-update" 이벤트로 둘다쏴줌
+      // 하지만 이후 결제할때 "stock-update" 이벤트로는 currentQuantity만 쏴줌
+      // 따라서 이렇게 받으면 문제 없음, 물론 여기에 isSelling도 포함시킨다면, 바로반영 가능할듯?
       const { sellQuantity, currentQuantity } = count
       console.log("재고:", sellQuantity);
       if (sellQuantity) {
