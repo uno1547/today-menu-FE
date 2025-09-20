@@ -30,7 +30,9 @@ const SellingStatusBox = ({ onStopSelling }) => {
 
   // 마운트시 소켓 연결
   useEffect(() => {
-    const newSocket = io("https://hyang-cafeteria-server.onrender.com");
+    const newSocket = io("https://hyang-cafeteria-server.onrender.com", {
+      transports: ['websocket'], // 웹소켓 전용
+    });
 
     newSocket.on("connect", () => {
       console.log("✅ 소켓 연결됨:", newSocket.id);
