@@ -1,0 +1,55 @@
+.startSellingSection {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 30px 0px;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inputGroup label {
+  font-weight: 500;
+  color: #333;
+  min-width: 80px;
+}
+
+.inputGroup input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 150px;
+  font-size: 1rem;
+}
+
+.inputGroup span {
+  color: #666;
+}
+
+.startBtn {
+  background-color: #28a745;
+  align-self: flex-start;
+}
+
+.startBtn:hover {
+  background-color: #218838;
+}
+
+.actionBtn {
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.actionBtn:hover {
+  background-color: #0056b3;
+}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link, Outlet, useLocation, Navigate, useNavigate } from "react-router-dom"
 
-import AdminLogin from "../Components/AdminLogin/AdminLogin"
+import AdminLogin from "../Components/Login/AdminLogin"
 import styles from "./AdminPage.module.css"
 
 const AdminPage = () => {
@@ -11,7 +11,8 @@ const AdminPage = () => {
   const navigate = useNavigate()
 
   const handleLogin = () => {
-    setIsLoggedIn(true)
+    /*서버에 로그인 처리*/
+    setIsLoggedIn(true) // 토큰 검사로 판단하는게 아니긴함, 초기화함수는 한번실행하고 말기때문에
     localStorage.setItem('accessToken', 'your-access-token') // 실제 토큰으로 교체
   }
 
@@ -30,19 +31,19 @@ const AdminPage = () => {
   }
 
   return (
-    <div className={styles.AdminPage}>
+    <div className={styles.adminPage}>
       <header className={styles.header}>
-        <h1>관리자 페이지</h1>
+        <h1 className={styles.mainText}>관리자 페이지</h1>
         <button onClick={handleLogout} className={styles.logoutBtn}>로그아웃</button>
+      </header>
         <nav className={styles.tabNav}>
           <Link to={"/admin/breakfast"} className={`${styles.tabBtn} ${location.pathname === '/admin/breakfast' ? styles.active : ''}`}>조식 관리</Link>
           <Link to={"/admin/menu"} className={`${styles.tabBtn} ${location.pathname === '/admin/menu' ? styles.active : ''}`}>메뉴 관리</Link>
         </nav>
-      </header>
       {/* 관리자 페이지 내용 */}
-      {/* <main className={styles.content}> */}
+      <main className={styles.content}>
       <Outlet />
-      {/* </main> */}
+      </main>
     </div>
   )
 }
