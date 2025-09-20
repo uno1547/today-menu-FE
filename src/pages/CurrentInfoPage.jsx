@@ -15,7 +15,9 @@ const CurrentInfoPage = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const newSocket = io("http://localhost:3000");
+    const newSocket = io("https://hyang-cafeteria-server.onrender.com", {
+      transports: ['websocket'], // 웹소켓 전용
+    });
     newSocket.on("connect", () => {
       console.log("✅ 소켓 연결됨:", newSocket.id);
       setIsLoading(false);

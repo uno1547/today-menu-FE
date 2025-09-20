@@ -15,7 +15,7 @@ const BreakfastManagement = () => {
       // setIsSellingActive(true)
       // return
       try {
-        const response = await fetch('http://localhost:3000/api/admin/breakfast-status');
+        const response = await fetch('https://hyang-cafeteria-server.onrender.com/api/admin/breakfast-status');
         const data = await response.json();
         if (response.ok) {
           setIsSellingActive(data.isSelling);
