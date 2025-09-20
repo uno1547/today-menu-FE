@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Button from "../Components/Button/Button"
 import style from "./KioskPage.module.css"
+const API_BASE_URL = import.meta.env.VITE_API_URL
 
 const KioskPage = () => {
   const [loading, setLoading] = useState(false)
@@ -20,7 +21,7 @@ const KioskPage = () => {
     */
 
     try {
-      const paymentRequest = await fetch("https://hyang-cafeteria-server.onrender.com/api/purchase", {
+      const paymentRequest = await fetch(`${API_BASE_URL}/api/purchase`, {
         method : "POST"
       })
 

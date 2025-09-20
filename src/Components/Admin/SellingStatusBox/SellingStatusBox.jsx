@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react'
 import { io } from 'socket.io-client'
 import styles from './SellingStatusBox.module.css'
+const API_BASE_URL = import.meta.env.VITE_API_URL
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL
+
 const SellingStatusBox = ({ onStopSelling }) => {
   const [totalQuantity, setTotalQuantity] = useState(0)
   const [currentQuantity, setCurrentQuantity] = useState(0)
 
   const handleStopSelling = async () => {
     try {
-      const response = await fetch('https://hyang-cafeteria-server.onrender.com/api/admin/stop-breakfast', {
+      const response = await fetch(`${API_BASE_URL}/api/admin/stop-breakfast`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,7 +33,7 @@ const SellingStatusBox = ({ onStopSelling }) => {
 
   // 마운트시 소켓 연결
   useEffect(() => {
-    const newSocket = io("https://hyang-cafeteria-server.onrender.com", {
+    const newSocket = io(SOCKET_URL, {
       transports: ['websocket'], // 웹소켓 전용
     });
 

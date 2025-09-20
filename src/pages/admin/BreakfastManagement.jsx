@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import StartSellingBox from '../../Components/Admin/StartSellingBox/StartSellingBox'
 import SellingStatusBox from '../../Components/Admin/SellingStatusBox/SellingStatusBox'
 import styles from './BreakfastManagement.module.css'
+const API_BASE_URL = import.meta.env.VITE_API_URL
 
 const BreakfastManagement = () => {
   const [isSellingActive, setIsSellingActive] = useState(false)
@@ -15,7 +16,7 @@ const BreakfastManagement = () => {
       // setIsSellingActive(true)
       // return
       try {
-        const response = await fetch('https://hyang-cafeteria-server.onrender.com/api/admin/breakfast-status');
+        const response = await fetch(`${API_BASE_URL}/api/admin/breakfast-status`, );
         const data = await response.json();
         if (response.ok) {
           setIsSellingActive(data.isSelling);
