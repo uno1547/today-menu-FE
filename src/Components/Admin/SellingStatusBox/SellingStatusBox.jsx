@@ -1,5 +1,10 @@
+import { useState, useEffect } from 'react'
+import { io } from 'socket.io-client'
 import styles from './SellingStatusBox.module.css'
 const SellingStatusBox = ({ onStopSelling }) => {
+  const [totalQuantity, setTotalQuantity] = useState(0)
+  const [currentQuantity, setCurrentQuantity] = useState(0)
+
   const handleStopSelling = async () => {
     try {
       const response = await fetch('http://localhost:3000/api/admin/stop-breakfast', {
@@ -23,11 +28,34 @@ const SellingStatusBox = ({ onStopSelling }) => {
     }
   }
 
+  // 마운트시 소켓 연결
+  useEffect(() => {
+    const newSocket = io("http://localhost:3000");
+
+    newSocket.on("connect", () => {
+      console.log("✅ 소켓 연결됨:", newSocket.id);
+    });
+    // 클라는 최초 수량 받는거랑 이후의 업데이트에 대해서 수량 push받으면된다.
+    newSocket.on("stock-update", count => {
+      const { sellQuantity, currentQuantity } = count
+      console.log("재고:", sellQuantity);
+      if (sellQuantity) {
+        setTotalQuantity(sellQuantity);
+      }
+      setCurrentQuantity(currentQuantity);
+      //
+    });
+    return () => {
+      newSocket.disconnect();
+    }
+  }, []);
+
   return (
     <div className={styles.stopSellingSection}>
       <div className={styles.statusInfo}>
         <span className={styles.statusIndicator}>🟢 판매 중</span>
         <span className={styles.statusMessage}>현재 천원의 아침밥을 판매하고 있습니다.</span>
+        <span>{currentQuantity} / {totalQuantity}개</span>
       </div>
       <button 
         onClick={handleStopSelling}
