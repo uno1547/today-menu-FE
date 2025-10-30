@@ -2,7 +2,8 @@ import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 
 import Menu from "../Components/StoresPage/Menu"
-import storePageStyle from "./StorePage.module.css"
+// import storePageStyle from "./StorePage.module.css"
+import storePageStyle from "./StoreTestPage.module.css"
 
 const menusData = [
   { name : "뼈해장국", price : "6500", url : "food.png"},
