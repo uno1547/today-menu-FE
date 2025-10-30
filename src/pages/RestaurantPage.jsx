@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 
 import Store from "../Components/RestaurantPage/Store.jsx";
 
-import restaurantStyle from "./RestaurantPage.module.css"
+import restaurantStyle from "./RestaurantTestPage.module.css";
 
 const name = {
   h1 : "향설생활관1",
