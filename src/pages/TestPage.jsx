@@ -24,8 +24,9 @@ const TestPage = () => {
 
   const getdataFromFirestore = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/get-data`)
-      const { data } = await response.json()
+      console.log(API_BASE_URL);
+      const response = await fetch(`${API_BASE_URL}/api/get-data`);
+      const { data } = await response.json();
       console.log(data);
       setData(data[0].name);
       console.log('Firestore 데이터:', data);

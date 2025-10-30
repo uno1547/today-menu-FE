@@ -1,0 +1,74 @@
+/* Navbar.module.css
+  네비게이션 바 스타일링 파일
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Nanum+Gothic:wght@700&display=swap');
+
+/* 기본 폰트 설정 (선택 사항이지만, 일관성을 위해 추천합니다) */
+:global(body) {
+  font-family: 'Inter', 'Nanum Gothic', sans-serif;
+  background-color: #f4f7f6; /* 전체 페이지 배경색 */
+  margin: 0;
+}
+
+/* 메인 타이틀: "Today Menu" */
+.Maintext {
+  font-size: 2.5rem; /* 40px */
+  font-weight: 700;
+  color: #2c3e50; /* 어두운 남색 */
+  text-align: center;
+  margin-top: 2.5rem; /* 40px */
+  margin-bottom: 1.5rem; /* 24px */
+}
+
+/* <nav> 태그 래퍼 */
+.nav {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ecf0f1; /* 연한 회색 테두리 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* 부드러운 그림자 */
+  display: flex;
+  justify-content: center; /* 네비게이션 중앙 정렬 */
+}
+
+/* <ul> 태그: 네비게이션 바 */
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* <li> 태그 (기본 상태) */
+.nav-bar li {
+  margin: 0;
+}
+
+/* <a> 태그 (링크) - .nav-bar 내부의 모든 <a> 태그에 적용 */
+.nav-bar li a {
+  display: block;
+  padding: 1rem 1.75rem; /* 16px 28px (클릭 영역 확보) */
+  text-decoration: none;
+  color: #7f8c8d; /* 비활성 링크 색상 (회색) */
+  font-weight: 500;
+  font-size: 1rem; /* 16px */
+  transition: color 0.3s ease, border-bottom-color 0.3s ease;
+  border-bottom: 3px solid transparent; /* 활성 상태를 위한 공간 확보 */
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+/* <a> 태그 (호버 상태) */
+.nav-bar li a:hover {
+  color: #3498db; /* 호버 시 파란색 */
+  background-color: #f8f9f9; /* 매우 연한 배경색 */
+}
+
+/* .current 클래스가 적용된 <li> 내부의 <a> 태그 스타일 */
+/* 현재 활성화된 탭 */
+.current {
+  color: #546a79; /* 활성 링크 색상 (파란색) */
+  font-weight: 700;
+  border-bottom: 3px solid #3498db; /* 하단 파란색 테두리 */
+}
