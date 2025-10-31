@@ -21,7 +21,7 @@
 
 /* 상단 식당명 (예: 향설생활관1) */
 .cafeteria-name {
-  font-size: 2.2rem; /* TodayMenu의 시간 텍스트와 비슷하게 */
+  font-size: 1.5rem; /* TodayMenu의 시간 텍스트와 비슷하게 */
   font-weight: 700;
   color: var(--text-primary);
   text-align: center;
