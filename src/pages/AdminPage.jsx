@@ -50,9 +50,9 @@ const AdminPage = () => {
             <li className={location.pathname.startsWith('/admin/breakfast') ? styles.current : ''}>
               <Link to={"/admin/breakfast"}>조식 관리</Link>
             </li>
-            <li className={location.pathname.startsWith('/admin/menu') ? styles.current : ''}>
+            {/* <li className={location.pathname.startsWith('/admin/menu') ? styles.current : ''}>
               <Link to={"/admin/menu"}>메뉴 관리</Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
       {/* 관리자 페이지 내용 */}
