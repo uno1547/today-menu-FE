@@ -23,6 +23,12 @@
   padding: 2.5rem 1.5rem;
 }
 
+.inner .header {
+  /* background-color: blue; */
+  position: relative;
+
+}
+
 /* ★ 식당 이름 (페이지 타이틀) */
 .inner h1 {
   font-size: 2.5rem;
@@ -30,21 +36,27 @@
   color: var(--text-primary);
   text-align: center;
   margin-top: 0;
-  margin-bottom: 1rem; /* 돌아가기 버튼과의 간격 */
+  margin-bottom: 2rem; /* 돌아가기 버튼과의 간격 */
 }
 
 /* ★ 돌아가기 버튼 */
 .previousBtn {
-  display: inline-block;
-  font-size: 1rem;
-  font-weight: 500;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  /* display: inline-block; */
+  /* height: 30px; */
+  font-size: 1.2rem;
+  font-weight: 700;
   color: var(--text-secondary);
   text-decoration: none;
   cursor: pointer;
-  padding: 0.5rem 0.75rem;
+  /* padding: 0.5rem 0.75rem; */
   border-radius: 8px;
   transition: all 0.2s ease;
-  margin-bottom: 2.5rem; /* 그리드와의 간격 */
+  /* margin-bottom: 2.5rem;  */
 }
 
 .previousBtn:hover {

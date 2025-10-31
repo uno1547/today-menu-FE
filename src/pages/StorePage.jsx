@@ -45,12 +45,15 @@ const StorePage = () => {
   }, [])
   return (
     <div className={storePageStyle.inner}>
-      <h1>{store}</h1>
+      <div className = {storePageStyle.header}>
+        <h1>{store}</h1>
+        {/* <span className={storePageStyle.previousBtn} onClick={() => {navigate(-1)}}>&lt; 돌아가기</span> */}
+        <span className={storePageStyle.previousBtn} onClick={() => {navigate(-1)}}>&lt;</span>
+      </div>
       {/* <span onClick={(e) => {
         e.preventDefault()
         navigate(-1)
       }}>&lt</span> */}
-      <span className={storePageStyle.previousBtn} onClick={() => {navigate(-1)}}>&lt; 돌아가기</span>
       {/* <button className={storePageStyle.previousBtn} onClick={() => {navigate(-1)}}>돌아가기</button> */}
       <div className={storePageStyle["grid-container"]}>
         {menus.map((menu) => {

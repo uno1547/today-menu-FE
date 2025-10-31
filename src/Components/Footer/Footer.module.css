@@ -1,3 +1,10 @@
+.footer {
+  padding: 1rem;
+  color: rgb(190, 190, 190);
+  color: var(--text-light);
+}
+
 .footer a {
   color: rgb(190, 190, 190);
+  color: var(--text-light);
 }

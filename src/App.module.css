@@ -29,6 +29,7 @@
 
   --text-primary: #333333; /* 짙은 텍스트 */
   --text-secondary: #777777; /* 연한 텍스트 */
+  --text-light: #cecece; /* 연한 텍스트 */
 
   --app-border: #e2eaf2; /* ★ 배경색에 맞춘 연한 테두리 */
   --app-border: #e9ecef; /* ★ 배경색에 맞춘 연한 테두리 */
