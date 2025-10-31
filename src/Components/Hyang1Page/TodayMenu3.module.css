@@ -5,28 +5,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
-:root {
-  /* ★ Navbar와 색상 통일 (파란색) */
-  /* --app-accent: #3498db; */
-  /* --app-accent: #18d335; */
-  /* --app-accent-dark: #2980b9; 호버용 짙은 파랑 */
-  /* --app-accent-dark: #18d335; 호버용 짙은 연두 */
-  
-  /* ★★★ 수정된 배경 색상 ★★★ */
-  --app-bg-white: #f4faff; /* ★ 매우 연한 푸른색 배경 */
-  --app-bg-light: #eaf6ff; /* ★ 리스트 배경 (연한 푸른색) */
-  
-  --text-primary: #333333; /* 짙은 텍스트 */
-  --text-secondary: #777777; /* 연한 텍스트 */
-  --app-border: #e2eaf2; /* ★ 배경색에 맞춘 연한 테두리 */
-}
-
 /* 메인 컨텐츠 카드 래퍼 - '대시보드 위젯' */
 .wrapper {
   font-family: 'Noto Sans KR', sans-serif;
   max-width: 550px;
   margin: 2rem auto;
   padding: 1.5rem;
+  background-color: #91e3ff; /* ★ 수정된 배경 */
+  background-color: var(--app-bg-light); /* ★ 수정된 배경 */
   background-color: var(--app-bg-white); /* ★ 수정된 배경 */
   color: var(--text-primary);
   border-radius: 12px;
@@ -87,6 +73,7 @@
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--app-accent-dark); /* ★ 텍스트 강조 (포인트 색상) */
+  color: var(--text-primary); /* ★ 텍스트 강조 (포인트 색상) */
   margin: 0 1rem;
   text-shadow: none;
 }
@@ -96,7 +83,12 @@
   margin-bottom: 2.5rem;
   padding: 1rem;
   border-radius: 8px;
+  /* font-weight: bold; */
+  background-color: #91e3ff; /* ★ 수정된 배경 */
   background: var(--app-bg-light); /* ★ 수정된 배경 */
+  background: var(--app-accent); /* ★ 수정된 배경 */
+  background: var(--app-bg-slight); /* ★ 수정된 배경 */
+  background: var(--app-accent-light); /* ★ 수정된 배경 */
   border: 1px solid var(--app-border); /* ★ 수정된 테두리 */
   backdrop-filter: none;
   box-shadow: none;
@@ -106,19 +98,20 @@
 .menuText {
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 1.1rem;
-  font-weight: 400; /* ★ 기본 폰트 */
+  font-weight: 700; /* ★ 기본 폰트 */
   color: var(--text-primary);
   padding: 1.1rem 1.2rem; /* ★ 좌우 패딩 */
   border-bottom: 1px solid var(--app-border); /* ★ 수정된 테두리 */
+  border-bottom: 1px solid var(--app-border-dark); /* ★ 수정된 테두리 */
   text-align: left; /* ★ 좌측 정렬 */
   transition: all 0.2s ease;
 }
 
 /* ★ 메인 메뉴 강조 제거 (통일) ★ */
 .list > .menuText:first-child {
-  font-weight: 400;
-  font-size: 1.1rem;
-  color: var(--text-primary);
+  /* font-weight: 400; */
+  /* font-size: 1.1rem; */
+  /* color: var(--text-primary); */
 }
 
 .list > .menuText:last-child {
@@ -127,7 +120,6 @@
 
 /* ★ 메뉴 호버 (배경색 변경) */
 .menuText:hover {
-  font-weight: 400; /* 굵기 변경 없음 */
   background-color: var(--app-bg-white); /* ★ 수정된 배경 */
   color: var(--app-accent);
   transform: none;

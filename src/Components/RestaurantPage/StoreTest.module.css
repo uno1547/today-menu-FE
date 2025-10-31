@@ -3,14 +3,16 @@
   개별 식당 카드 스타일링
 */
 
+/*
 :root {
-  --app-accent: #3498db; /* Navbar와 동일한 파란색 */
-  --app-accent-light: #e6f3ff; /* 연한 파랑 (호버용) */
+  --app-accent: #3498db; 
+  --app-accent-light: #e6f3ff;
   --app-bg-white: #ffffff;
   --text-primary: #333333;
   --text-secondary: #777777;
   --app-border: #e9ecef;
 }
+*/
 
 /* 개별 식당 카드 */
 .store {

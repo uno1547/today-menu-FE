@@ -5,14 +5,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
+/*
 :root {
-  /* Navbar와 색상 통일 (파란색) */
   --app-accent: #3498db;
   --app-accent-dark: #2980b9;
   --text-primary: #333333;
   --text-secondary: #777777;
   --app-border: #e9ecef;
 }
+*/
 
 /* ★ 페이지 전체 컨테이너 */
 .inner {

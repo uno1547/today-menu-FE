@@ -3,13 +3,15 @@
   식당 목록 페이지 스타일링
 */
 
+/*
 :root {
-  --app-accent: #3498db; /* Navbar와 동일한 파란색 */
+  --app-accent: #3498db; 
   --app-bg-white: #ffffff;
-  --app-bg-light: #f7f9fa; /* 연한 배경 */
+  --app-bg-light: #f7f9fa;
   --text-primary: #333333;
   --app-border: #e9ecef;
 }
+*/
 
 /* ★ 식당 목록 페이지의 메인 컨테이너 */
 .restaurant-page {

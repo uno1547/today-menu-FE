@@ -5,3 +5,32 @@
 .inner>img {
   width: 100%;
 }
+
+
+:root {
+  /* ★ Navbar와 색상 통일 (파란색) */
+  --app-accent: #3498db;
+  /* --app-accent: #18d335; */
+
+  --app-accent-light: #e6f3ff;
+
+  /* --app-accent-dark: #2980b9; */
+  --app-accent-dark: #15a0fd;
+  /* --app-accent-dark: #18d335; 호버용 짙은 연두 */
+  
+  /* ★★★ 수정된 배경 색상 ★★★ */
+  --app-bg-white: #f4faff; /* ★ 매우 연한 푸른색 배경 */
+  --app-bg-white: #ffffff; /* ★ 매우 연한 푸른색 배경 */
+  
+  --app-bg-light: #f4faff; /* ★ 매우 연한 푸른색 배경 */
+  --app-bg-light: #eaf6ff; /* ★ 리스트 배경 (연한 푸른색) */
+  --app-bg-slight: #edf9ff;
+  --app-bg-light: #f7f9fa;
+
+  --text-primary: #333333; /* 짙은 텍스트 */
+  --text-secondary: #777777; /* 연한 텍스트 */
+
+  --app-border: #e2eaf2; /* ★ 배경색에 맞춘 연한 테두리 */
+  --app-border: #e9ecef; /* ★ 배경색에 맞춘 연한 테두리 */
+  --app-border-dark: #c4d5e5; /* ★ 배경색에 맞춘 연한 테두리 */
+}

@@ -3,15 +3,16 @@
   개별 메뉴 카드 스타일링
 */
 
+/*
 :root {
-  /* Store.module.css와 동일한 테마 */
   --app-accent: #3498db;
-  --app-accent-light: #e6f3ff; /* 연한 파랑 (호버용) */
+  --app-accent-light: #e6f3ff;
   --app-bg-white: #ffffff;
   --text-primary: #333333;
   --text-secondary: #777777;
   --app-border: #e9ecef;
 }
+*/
 
 /* ★ 개별 메뉴 카드 */
 .menu {
