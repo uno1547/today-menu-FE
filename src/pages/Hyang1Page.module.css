@@ -1,12 +1,15 @@
 .cafeteria-name {
-  text-align: left;
-  color: rgb(0, 0, 0);
+  /* text-align: left; */
+  font-size: 1.5rem;
+  font-weight: 700;
+  color:  #333333;
 }
 
 .date-text {
-  text-align: left;
+  /* text-align: left; */
   color: rgb(178 178 178);
-  font-size: 14px;
-  margin-top: 10px;
+  font-weight: 400;;
+  font-size: 1rem;
+  margin-top: 5px;
   margin-bottom: 0px;
 }

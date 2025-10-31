@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import style from "./TodayMenu.module.css"
+import style from "./TodayMenu3.module.css"
 
 import { Link } from "react-router-dom"
 
@@ -59,7 +59,8 @@ const TodayMenu = () => {
         {datas[time[timeIdx]]?.items.filter(menu => menu.category === "국").map(menu => <div key={menu.name} className={style.menuText}>{menu.name}</div>)}
         {datas[time[timeIdx]]?.items.filter(menu => menu.category === "반찬").map(menu => <div key={menu.name} className={style.menuText}>{menu.name}</div>)}
       </div>
-      {datas["아침"] && (timeIdx == 0) && <Link to="current-info" style={{fontWeight : "bold", color : "#e72626", padding : "5px"}}>실시간 수량보러가기</Link>}
+      {datas["아침"] && (timeIdx == 0) && <Link to="current-info" style={{fontWeight : "bold", color : "var(--app-accent-dark)", padding : "5px"}}>실시간 수량보러가기</Link>}
+      {/* {datas["아침"] && (timeIdx == 0) && <Link to="current-info" style={{fontWeight : "bold", color : "var(--text-primary)", padding : "5px"}}>실시간 수량보러가기</Link>} */}
       {/* {datas["아침"] && (timeIdx == 0) && <Link to="current-info" style={{fontWeight : "bold", color : "#e72626", padding : "5px"}}>천원의 아침밥</Link>} */}
       <div className={style.monthText}>
         {/* <Link>이번달 식단표 보러가기</Link> */}

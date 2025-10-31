@@ -1,0 +1,158 @@
+/*
+  TodayMenu.module.css
+  오늘의 메뉴 컨텐츠 스타일링 (볼드 & 벤토(Bento) 테마)
+  만화느낌
+*/
+
+/* 폰트 (선명한 산세리프 폰트) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+/* 메인 컨텐츠 카드 래퍼 */
+.wrapper {
+  font-family: 'Noto Sans KR', sans-serif;
+  max-width: 550px;
+  margin: 2.5rem auto;
+  padding: 2.5rem;
+  background-color: #ffffff; /* ★ 깨끗한 흰색 */
+  border-radius: 10px; /* 모서리는 살짝 둥글게 */
+  border: 2px solid #1a1a1a; /* ★ 선명한 검은색 테두리 */
+  box-shadow: 8px 8px 0px #1a1a1a; /* ★ 'Hard Shadow' 핵심 패턴 */
+  text-align: center;
+  overflow: hidden;
+  color: #1a1a1a; /* 기본 텍스트 색상 */
+}
+
+/* 시간 토글 네비게이션 (아침, 점심, 저녁) */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem; /* 간격 살짝 줄임 */
+  padding-bottom: 2rem; /* 패딩으로 간격 조절 */
+  user-select: none;
+  border-bottom: 2px solid #1a1a1a; /* ★ 헤더 구분선 */
+}
+
+/* 시간 토글 버튼 (<, >) - 볼드 스타일 */
+.nav button {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border: 2px solid #1a1a1a; /* ★ 버튼에도 선명한 테두리 */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0px 0px 0px #000; /* 기존 그림자 제거 */
+}
+
+/* ★ 버튼 호버 효과 (떠오르는 대신 눌리는 느낌) */
+.nav button:hover {
+  background-color: #f0f0f0;
+  transform: translateY(2px); /* 살짝 아래로 */
+}
+
+.nav button:active {
+  transform: scale(0.95) translateY(2px);
+  background-color: #e0e0e0;
+}
+
+/* 시간 텍스트 (아침, 점심, 저녁) */
+.timeText {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 1rem;
+  letter-spacing: -0.5px; /* 자간을 살짝 좁혀 밀도있게 */
+}
+
+/* 메뉴 아이템 리스트 컨테이너 */
+.list {
+  margin-bottom: 2.5rem;
+  padding: 0;
+  background-color: #ffffff;
+  /* ★ 리스트 자체의 테두리, 그림자 모두 제거 (wrapper가 감싸므로) */
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+}
+
+/* 개별 메뉴 텍스트 (밥, 국, 반찬) */
+.menuText {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1.1rem;
+  color: #333;
+  padding: 1.1rem 1rem;
+  border-bottom: 2px dashed #e0e0e0; /* ★ 'Dashed' 테두리로 변경 */
+  text-align: left; /* ★ '좌측 정렬'로 패턴 변경 */
+  transition: all 0.2s ease;
+}
+
+.list > .menuText:first-child {
+  font-weight: 700;
+  color: #000;
+  font-size: 1.2rem;
+}
+
+.list > .menuText:last-child {
+  border-bottom: none;
+}
+
+/* ★ 메뉴 호버 시 패턴 변경 */
+.menuText:hover {
+  background-color: #fffbe6; /* ★ 연한 노란색 배경 */
+  color: #000;
+  transform: none; /* 이전 transform 효과 제거 */
+  padding-left: 1.5rem; /* 들여쓰기 효과 */
+}
+
+/* "실시간 수량보러가기" 링크 (선택 사항) */
+/* ★ Hard Shadow 버튼 */
+.realtimeLink {
+  display: inline-block;
+  font-weight: 700;
+  color: #1a1a1a;
+  background-color: #fde047; /* ★ 쨍한 노란색 */
+  background-image: none; /* 그라데이션 제거 */
+  padding: 0.8rem 1.6rem;
+  border-radius: 30px;
+  text-decoration: none;
+  border: 2px solid #1a1a1a; /* ★ 선명한 테두리 */
+  box-shadow: 4px 4px 0px #1a1a1a; /* ★ Hard Shadow */
+  transition: all 0.15s ease-out;
+  margin-bottom: 1.5rem;
+}
+
+/* ★ 버튼 호버 시 (눌리는 효과) */
+.realtimeLink:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #1a1a1a;
+  background-color: #facc15; /* 살짝 진한 노랑 */
+}
+
+
+/* "이번달 식단표 보러가기" 링크 컨테이너 */
+.monthText {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+/* .monthText 내부의 <a> 태그 스타일 */
+.monthText a {
+  color: #555;
+  text-decoration: none;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+/* ★ 호버 시 */
+.monthText a:hover {
+  color: #000;
+  border-color: #000;
+}
+

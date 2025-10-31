@@ -2,7 +2,8 @@ import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 
 import Menu from "../Components/StoresPage/Menu"
-import storePageStyle from "./StorePage.module.css"
+// import storePageStyle from "./StorePage.module.css"
+import storePageStyle from "./StoreTestPage.module.css"
 
 const menusData = [
   { name : "뼈해장국", price : "6500", url : "food.png"},
@@ -44,12 +45,15 @@ const StorePage = () => {
   }, [])
   return (
     <div className={storePageStyle.inner}>
-      <h1>{store}</h1>
+      <div className = {storePageStyle.header}>
+        <h1>{store}</h1>
+        {/* <span className={storePageStyle.previousBtn} onClick={() => {navigate(-1)}}>&lt; 돌아가기</span> */}
+        <span className={storePageStyle.previousBtn} onClick={() => {navigate(-1)}}>&lt;</span>
+      </div>
       {/* <span onClick={(e) => {
         e.preventDefault()
         navigate(-1)
       }}>&lt</span> */}
-      <span className={storePageStyle.previousBtn} onClick={() => {navigate(-1)}}>&lt; 돌아가기</span>
       {/* <button className={storePageStyle.previousBtn} onClick={() => {navigate(-1)}}>돌아가기</button> */}
       <div className={storePageStyle["grid-container"]}>
         {menus.map((menu) => {

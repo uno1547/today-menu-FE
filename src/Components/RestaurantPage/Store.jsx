@@ -1,4 +1,5 @@
-import style from "./Store.module.css"
+// import style from "./Store.module.css"
+import style from "./StoreTest.module.css"
 import { useNavigate, useParams } from "react-router-dom"
 
 const Store = ({ store }) => {
