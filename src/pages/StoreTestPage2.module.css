@@ -1,0 +1,79 @@
+/*
+  StoreTestPage.module.css
+  (Test Version) - 헤더와 컨텐츠 분리 디자인
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+:root {
+  /* Navbar와 색상 통일 (파란색) */
+  --app-accent: #3498db;
+  --app-accent-dark: #2980b9;
+  --app-bg-white: #ffffff;
+  --app-bg-light-blue: #f0f6fa; /* ★ 그리드 배경용 연한 푸른색 */
+  --text-primary: #333333;
+  --text-secondary: #777777;
+  --app-border: #e9ecef;
+}
+
+/* ★ 페이지 전체 컨테이너 */
+.inner {
+  font-family: 'Noto Sans KR', sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* ★ 내부 패딩을 0으로 설정하여 헤더가 상단에 붙도록 함 */
+  padding: 0; 
+  background-color: var(--app-bg-white);
+}
+
+/* ★ 식당 이름 (페이지 타이틀) */
+/* h1과 돌아가기 버튼을 하나의 '헤더 블록'으로 스타일링 */
+.inner h1 {
+  font-size: 2.2rem; /* 폰트 크기 살짝 조정 */
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin: 0;
+  padding-top: 2.5rem; /* 상단 여백 */
+  padding-bottom: 0.5rem; /* 돌아가기 버튼과의 간격 */
+}
+
+/* ★ 돌아가기 버튼 */
+.previousBtn {
+  display: block; /* 블록 요소로 변경 */
+  text-align: center; /* h1과 함께 중앙 정렬 */
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.2s ease;
+  
+  /* ★ 헤더 영역과 그리드 영역을 구분하는 선 */
+  margin-bottom: 2rem; /* 그리드와의 간격 */
+  padding-bottom: 2rem;
+  border-bottom: 2px solid var(--app-border); 
+}
+
+.previousBtn:hover {
+  background-color: transparent; /* 호버 시 배경색 없음 */
+  color: var(--app-accent); /* 텍스트 색상만 변경 */
+}
+
+/* ★ 메뉴 카드들을 담는 그리드 컨테이너 */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem; /* 카드 사이 간격 */
+  justify-content: center;
+  
+  /* ★ 그리드 영역에만 별도의 배경색과 패딩 적용 */
+  background-color: var(--app-bg-light-blue);
+  padding: 2rem;
+  /*
+    페이지 전체에 둥근 모서리를 주지 않고,
+    그리드 영역에만 둥근 모서리를 적용 (선택 사항)
+  */
+  /* border-radius: 12px; */
+}

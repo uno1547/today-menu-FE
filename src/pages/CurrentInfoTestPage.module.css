@@ -1,0 +1,223 @@
+/*
+  CurrentInfo.module.css
+  대기 현황 페이지 스타일 (개선안)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+/* --- 1. 헤더 및 뒤로가기 --- */
+.header {
+  position: relative;
+}
+
+/* ★ 헤더 텍스트 (기존 파란 배경 제거) */
+.HeadText {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333333; /* --text-primary */
+  text-align: center;
+  margin: 0;
+  /* margin: 2.5rem auto 1rem auto; */
+  /* max-width: 600px; */
+  padding: 1.2rem 1.5rem;
+  /* border-bottom: 1px solid var(--app-border-dark); */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  background-color: transparent; /* 기존 배경 제거 */
+}
+
+/* ★ 뒤로가기 버튼 (position: absolute 제거) */
+.previousBtn {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  font-family: 'Noto Sans KR', sans-serif;
+  max-width: 600px;
+  margin: 1.5rem auto 1.5rem auto; /* 중앙 정렬, 하단 여백 */
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #777777; /* --text-secondary */
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left; /* 좌측 정렬 */
+  
+  /* position, top, left 속성 제거 */
+}
+
+.previousBtn:hover {
+  color: #3498db; /* --app-accent */
+}
+
+/* --- 2. 판매 중 현황판 --- */
+
+/* ★ 현황판 카드 컨테이너 */
+.cnt-div3 {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+/* ★ .stock3와 .wait3를 감싸는 flex 박스 */
+.cnt-div3 > div {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* 카드 높이 동일하게 */
+  gap: 1.5rem; /* 카드 사이 간격 */
+}
+
+/* ★ 잔여 수량 / 대기 인원 카드 스타일 */
+.stock3,
+.wait3 {
+  font-family: 'Noto Sans KR', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  flex: 1; /* 1:1 비율로 공간 차지 */
+  background-color: #f0f6fa; /* --app-bg-light-blue */
+  background-color: var(--app-bg-light);
+  border: 1px solid #e9ecef; /* --app-border */
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  min-height: 150px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* ★ 카드 제목 (잔여 수량, 대기 인원 수) */
+.cntH {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #777777; /* --text-secondary */
+  color: var(--text-primary); /* --text-secondary */
+  margin-bottom: 0.5rem;
+}
+
+/* ★ 카드 데이터 (숫자) */
+.cntV {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3498db; /* --app-accent */
+  color: var(--app-accent); 
+  /* color: #2b6a94;  */
+}
+
+/* --- 3. 판매 마감 화면 --- */
+
+/* ★ 판매 마감 컨테이너 */
+.closedDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5rem auto;
+  max-width: 600px;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+/* ★ 판매 마감 메시지 박스 (기존 스타일 개선) */
+.closedMessage {
+  font-family: 'Noto Sans KR', sans-serif;
+  text-align: center;
+  background-color: #fdf6f6; /* 연한 빨간 배경 */
+  border: 1px solid #e74c3c; /* 빨간 테두리 */
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
+  width: 100%;
+}
+
+.closedMessage h2 {
+  color: #e74c3c; /* 빨간색 */
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.closedMessage p {
+  color: #555555; /* 가독성을 위해 더 진한 회색 */
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+
+/* --- 사용하지 않는 기존 클래스 (제거) --- */
+.img, .alert, .cnt-div1, .stock1, .wait1, .cnt-div2, .stock2, .wait2 {
+  /* display: none; */
+}
+
+@media (max-width: 600px) {
+  /* 헤더 텍스트 모바일 최적화 */
+  .HeadText {
+    font-size: 1.7rem;
+    padding: 1rem;
+  }
+  
+  /* 뒤로가기 버튼 모바일 최적화 */
+  .previousBtn {
+    font-size: 1.3rem;
+    left: 10px;
+    /* top: 50%;
+    transform: translateY(-50%); */
+  }
+  
+  /* 현황판 컨테이너 패딩 조정 */
+  .cnt-div3 {
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+  }
+  
+  /* 카드 레이아웃을 세로로 변경 */
+  .cnt-div3 > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* 개별 카드 모바일 최적화 */
+  .stock3,
+  .wait3 {
+    padding: 1.5rem 1rem;
+    min-height: 120px;
+  }
+  
+  /* 카드 제목 크기 조정 */
+  .cntH {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+  
+  /* 카드 데이터 숫자 크기 조정 */
+  .cntV {
+    font-size: 2.2rem;
+  }
+  
+  /* 판매 마감 컨테이너 패딩 조정 */
+  .closedDiv {
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  /* 판매 마감 메시지 모바일 최적화 */
+  .closedMessage {
+    padding: 2rem 1.5rem;
+  }
+  
+  .closedMessage h2 {
+    font-size: 1.3rem;
+  }
+  
+  .closedMessage p {
+    font-size: 0.9rem;
+  }
+}

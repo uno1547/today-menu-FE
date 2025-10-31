@@ -1,0 +1,45 @@
+/*
+  RestaurantPage.module.css
+  식당 목록 페이지 스타일링
+*/
+
+/*
+:root {
+  --app-accent: #3498db; 
+  --app-bg-white: #ffffff;
+  --app-bg-light: #f7f9fa;
+  --text-primary: #333333;
+  --app-border: #e9ecef;
+}
+*/
+
+/* ★ 식당 목록 페이지의 메인 컨테이너 */
+.restaurant-page {
+  font-family: 'Noto Sans KR', sans-serif;
+  padding: 2.5rem 1.5rem; /* 상하좌우 패딩 */
+  max-width: 1200px; /* 전체 너비 제한 */
+  margin: 0 auto; /* 중앙 정렬 */
+}
+
+/* 상단 식당명 (예: 향설생활관1) */
+.cafeteria-name {
+  font-size: 1.5rem; /* TodayMenu의 시간 텍스트와 비슷하게 */
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 2.5rem; /* 아래 그리드와의 간격 */
+  letter-spacing: -0.03em; /* 글자 간격 살짝 좁게 */
+}
+
+/* ★ 그리드 컨테이너: 식당 카드들을 담는 곳 */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* 반응형 그리드 */
+  gap: 2rem; /* 그리드 항목 사이의 간격 */
+  justify-content: center; /* 카드들을 중앙으로 모으기 */
+  padding: 0 1rem; /* 좌우 여백 */
+}
+
+/*
+  Store 컴포넌트 자체의 스타일은 Store.module.css에서 정의합니다.
+*/

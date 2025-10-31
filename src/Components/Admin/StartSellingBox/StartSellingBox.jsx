@@ -35,7 +35,7 @@ const StartSellingBox = ({ onSellingStart }) => {
   return (
     <div className={styles.startSellingSection}>
       <div className={styles.inputGroup}>
-        <label htmlFor="sellQuantity">판매 수량:</label>
+        <label htmlFor="sellQuantity">판매 수량 (개)</label>
         <input
           type="number"
           id="sellQuantity"
@@ -45,14 +45,15 @@ const StartSellingBox = ({ onSellingStart }) => {
           min="1"
           max="200"
         />
-        <span>개</span>
       </div>
-      <button 
-        onClick={handleStartSelling}
-        className={`${styles.actionBtn} ${styles.startBtn}`}
-      >
-        판매 시작
-      </button>
+      <div>
+        <button 
+          onClick={handleStartSelling}
+          className={`${styles.actionBtn} ${styles.startBtn}`}
+        >
+          판매 시작
+        </button>
+      </div>
     </div>
   )
 }

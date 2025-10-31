@@ -1,0 +1,75 @@
+/*
+  Menu.module.css
+  개별 메뉴 카드 스타일링
+*/
+
+/*
+:root {
+  --app-accent: #3498db;
+  --app-accent-light: #e6f3ff;
+  --app-bg-white: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #777777;
+  --app-border: #e9ecef;
+}
+*/
+
+/* ★ 개별 메뉴 카드 */
+.menu {
+  background-color: var(--app-bg-white);
+  border-radius: 12px;
+  border: 1px solid var(--app-border);
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  /* ★ Store.jsx와 달리 클릭 이벤트를 가정하지 않음 (cursor: pointer 제거) */
+}
+
+/* ★ 카드 호버 시 효과 (Store.jsx와 동일) */
+.menu:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  border-color: var(--app-accent);
+}
+
+/* ★ 메뉴 이미지 */
+.menu img {
+  width: 100%;
+  height: 160px; /* Store 카드보다 살짝 작게 */
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid var(--app-border);
+}
+
+/* ★ 메뉴 이름 텍스트 */
+.text {
+  display: block; /* span을 block 요소로 */
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 1rem 1rem 0.25rem 1rem; /* 상단 패딩 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left; /* ★ 좌측 정렬 */
+}
+
+/* ★ 메뉴 가격 텍스트 */
+.price {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary); /* ★ 보조 텍스트 색상 */
+  padding: 0 1rem 1rem 1rem; /* 하단 패딩 */
+  text-align: left; /* ★ 좌측 정렬 */
+}
+
+/* ★ 호버 시 텍스트 색상 변경 */
+.menu:hover .text {
+  color: var(--app-accent);
+}
+
+/* ★ 호버 시 가격 색상도 변경 (선택 사항) */
+.menu:hover .price {
+  color: var(--app-accent);
+}

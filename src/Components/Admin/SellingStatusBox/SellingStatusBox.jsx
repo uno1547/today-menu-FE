@@ -63,14 +63,16 @@ const SellingStatusBox = ({ onStopSelling }) => {
       <div className={styles.statusInfo}>
         <span className={styles.statusIndicator}>🟢 판매 중</span>
         <span className={styles.statusMessage}>현재 천원의 아침밥을 판매하고 있습니다.</span>
-        <span>{currentQuantity} / {totalQuantity}개</span>
+        <span className={styles.statusQuantity}>{currentQuantity} / {totalQuantity}개</span>
       </div>
-      <button 
-        onClick={handleStopSelling}
-        className={`${styles.actionBtn} ${styles.stopBtn}`}
-      >
-        판매 종료
-      </button>
+      <div className={styles.actionGroup}>
+        <button 
+          onClick={handleStopSelling}
+          className={`${styles.actionBtn} ${styles.stopBtn}`}
+        >
+          판매 종료
+        </button>
+      </div>
     </div>
   )
 }

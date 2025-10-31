@@ -1,6 +1,8 @@
 import { useState } from "react"
 import Button from "../Components/Button/Button"
-import style from "./KioskPage.module.css"
+// import style from "./KioskPage.module.css"
+import style from "./KioskPageTest.module.css"
+import ticketImage from "../assets/ticket-image.png"
 const API_BASE_URL = import.meta.env.VITE_API_URL
 
 const KioskPage = () => {
@@ -49,7 +51,9 @@ const KioskPage = () => {
     <>
       <h1 className={style.headText}>결제하기</h1>
       <div className={style.ticket}>
-        <div className={style.img}></div>
+        <div className={style.img}>
+          <img src={ticketImage} alt="식권" />
+        </div>
         <div className={style.info}>
           <span className={style.name}>천원의 아침밥 [식권]</span>
           <span className={style.price}>1000원</span>
@@ -57,7 +61,9 @@ const KioskPage = () => {
             <span>가격</span>
             <span className={style.price}>1000원</span>
           </div> */}
-          <Button text="결제하기" handler={paymentHandler} disabled = {loading}/>
+          <div className={style.buttonWrapper}>
+            <Button text="결제하기" handler={paymentHandler} disabled = {loading}/>
+          </div>
         </div>
         {/* <div>{message}</div> */}
       </div>

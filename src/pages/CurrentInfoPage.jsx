@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import ricepan from "../../../img/천밥.png";
-import style from "./CurrentInfo.module.css";
+// import style from "./CurrentInfo.module.css";
+import style from "./CurrentInfoTestPage.module.css";
 const SOCKET_URL = import.meta.env.VITE_SOCKET_URL
 
 import { io } from "socket.io-client";
@@ -66,8 +67,10 @@ const CurrentInfoPage = () => {
 
   return (
     <>
-      <h1 className={style["HeadText"]}>대기 현황</h1>
-      <span className={style.previousBtn} onClick={() => {navigate(-1)}}>&lt; 돌아가기</span>
+      <div className={style.header}>
+        <h1 className={style["HeadText"]}>대기 현황</h1>
+        <span className={style.previousBtn} onClick={() => {navigate(-1)}}>&lt;</span>
+      </div>
       {isLoading ? (
         <div>Loading...</div>
       ) : isSellingActive ? (
@@ -76,7 +79,7 @@ const CurrentInfoPage = () => {
           <div>
             <div className={style.stock3}>
               <span className={style.cntH}>잔여 수량</span>
-              <span className = {style.cntV}>{`${curCnt} / ${totalQuantity}`}</span>
+              <span className = {style.cntV}>{`${curCnt} / ${totalQuantity} 개`}</span>
               {/* <span className = {style.cntV}>{`${quantity ? quantity : 50} / 100 개`}</span> */}
             </div>
             <div className={style.wait3}>

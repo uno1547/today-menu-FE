@@ -1,4 +1,5 @@
-import style from "./Menu.module.css"
+// import style from "./Menu.module.css"
+import style from "./MenuTest.module.css"
 const Menu = ({ menu }) => {
   const {name, price, url} = menu
   return (
