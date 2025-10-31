@@ -10,7 +10,11 @@
 :root {
   /* ★ Navbar와 색상 통일 (파란색) */
   --app-accent: #3498db;
+  /* --app-alert: #ff6b6b; */
+  --app-alert: #dc3545;
   /* --app-accent: #18d335; */
+  --app-logout: #b7b7b7;
+
 
   --app-accent-light: #e6f3ff;
 

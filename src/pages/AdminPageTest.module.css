@@ -32,6 +32,7 @@
 
 .logoutBtn {
   background-color: #e74c3c;
+  background-color: var(--app-logout);
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
@@ -43,7 +44,7 @@
 }
 
 .logoutBtn:hover {
-  background-color: #c0392b;
+  background-color: #303030;
 }
 
 /* --- 2. Navbar.module.css에서 가져온 스타일 --- */

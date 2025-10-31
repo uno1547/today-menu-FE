@@ -1,28 +1,3 @@
-@media (max-width: 600px) {
-  .startSellingSection {
-    padding: 0;
-    flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: center; */
-  }
-
-  .inputGroup {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .actionBtn {
-    /* padding: 0.75rem 1.5rem; */
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-  }
-}
-
 .stopSellingSection {
   display: flex;
   justify-content: space-between;
@@ -33,31 +8,44 @@
 .statusInfo {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  /* gap: 0.2rem; */
+}
+
+.statusInfo span {
+  padding: 5px 0px; 
 }
 
 .statusIndicator {
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #28a745;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   text-align: left;
-  padding: 0;
+  /* padding: 10px 0px; */
 }
 
 .statusMessage {
+  font-weight: bold;
   /* color: #666; */
-  /* font-size: 0.9rem; */
+  font-size: 0.9rem;
   /* text-align: left; */
-  padding: 10px 0px;
+  /* padding: 5px 0px; */
+  color: var(--text-secondary);
 }
 
-.stopBtn {
-  background-color: #dc3545;
+.statusInfo .statusQuantity {
+  text-align: left;
+  font-weight: 700;
+  font-size: 1.5rem;
+  /* padding: 0px; */
+  color: var(--text-primary); /* 진한 색상 */ 
 }
 
-.stopBtn:hover {
-  background-color: #c82333;
+.actionGroup {
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-end; */
 }
+
 .actionBtn {
   padding: 0.75rem 1.5rem;
   background-color: #007bff;
@@ -70,6 +58,37 @@
   transition: background-color 0.3s ease;
 }
 
-.actionBtn:hover {
+/* .actionBtn:hover {
   background-color: #0056b3;
+} */
+.stopBtn {
+  background-color: #dc3545;
+  background-color: var(--app-alert);
+}
+
+.stopBtn:hover {
+  background-color: #6a0d16;
+}
+
+
+
+
+
+@media (max-width: 600px) {
+  .statusMessage {
+    display: none;
+  }
+  .stopSellingSection {
+    flex-direction: column; 
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .actionGroup {
+    width: 100%;
+    align-items: center;
+  }
+  .actionGroup button {
+    width: 100%;
+  } 
 }
