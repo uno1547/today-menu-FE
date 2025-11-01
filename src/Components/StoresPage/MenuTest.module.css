@@ -32,6 +32,14 @@
   border-color: var(--app-accent);
 }
 
+@media (max-width: 600px) {
+  .menu:hover {
+    transform: none; /* 모바일에서는 호버 효과 제거 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* 기본 그림자 유지 */
+    border-color: var(--app-border); /* 기본 테두리 색상 유지 */
+  }
+}
+
 /* ★ 메뉴 이미지 */
 .menu img {
   width: 100%;
@@ -69,7 +77,27 @@
   color: var(--app-accent);
 }
 
+@media (max-width: 600px) {
+  .menu:hover .text {
+    /* color: var(--app-text); */
+    /* color: var(--text-primary); */
+    color: var(--text-primary);
+    background-color: var(--app-bg-white);
+    /* background-color: var(--app-accent-light); */
+  }
+}
+
 /* ★ 호버 시 가격 색상도 변경 (선택 사항) */
 .menu:hover .price {
   color: var(--app-accent);
+}
+
+@media (max-width: 600px) {
+  .menu:hover .price {
+    /* color: var(--app-text); */
+    /* color: var(--text-primary); */
+    color: var(--text-primary);
+    background-color: var(--app-bg-white);
+    /* background-color: var(--app-accent-light); */
+  }
 }
