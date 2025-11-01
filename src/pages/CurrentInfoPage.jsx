@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 // import ricepan from "../../../img/천밥.png";
 // import style from "./CurrentInfo.module.css";
 import style from "./CurrentInfoTestPage.module.css";
+// import style from "./CurrentInfoLive.module.css";
 const SOCKET_URL = import.meta.env.VITE_SOCKET_URL
 
 import { io } from "socket.io-client";
@@ -88,9 +89,18 @@ const CurrentInfoPage = () => {
             <div className={style.wait3}>
               <span className={style.cntH}>대기 인원 수</span>
               <span className = {style.cntV}>{`${waitCnt ? waitCnt : 0} 명`}</span>
-              {waitImg && <img src={`data:image/png;base64,${waitImg}`} alt="대기 이미지" style={{ width: '200px', marginTop: '10px' }} />}
             </div>
           </div>
+          {waitImg && (
+            <div className={style.waitImageContainer}>
+              <span className={style.imageTitle}>현재 대기 상황</span>
+              <img 
+                src={`data:image/png;base64,${waitImg}`} 
+                alt="대기 이미지" 
+                className={style.waitImage}
+              />
+            </div>
+          )}
         </div>
       ) : (
         // 판매 마감 시 표시
