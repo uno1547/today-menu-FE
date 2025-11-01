@@ -15,7 +15,7 @@ const StartSellingBox = ({ onSellingStart }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ quantity: sellQuantity }),
+        body: JSON.stringify({ quantity: Number(sellQuantity) }),
       });
       const data = await response.json();
       if (response.ok) {

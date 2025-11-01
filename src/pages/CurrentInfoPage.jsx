@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 // import ricepan from "../../../img/천밥.png";
 // import style from "./CurrentInfo.module.css";
 import style from "./CurrentInfoTestPage.module.css";
+// import style from "./CurrentInfoLive.module.css";
 const SOCKET_URL = import.meta.env.VITE_SOCKET_URL
 
 import { io } from "socket.io-client";
@@ -10,6 +11,7 @@ import { io } from "socket.io-client";
 const CurrentInfoPage = () => {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [curCnt, setCurCnt] = useState(0);
+  const [waitImg, setWaitImg] = useState(null)
   const [waitCnt, setWaitCnt] = useState(0);
   const [isSellingActive, setIsSellingActive] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -51,9 +53,11 @@ const CurrentInfoPage = () => {
       setCurCnt(currentQuantity);
     })
     newSocket.on("waitCnt-update", (count) => { // waitCnt 업데이트용 이벤트
-      const { currentWaitCnt } = count;
+      const { currentWaitCnt, imageB64 } = count;
       setWaitCnt(currentWaitCnt);
+      setWaitImg(imageB64);
       console.log("대기 인원 수:", currentWaitCnt);
+      console.log("대기 이미지:", imageB64);
     });
     // 컴포넌트가 마운트될 때 소켓 연결
     // console.log('effect');
@@ -87,6 +91,16 @@ const CurrentInfoPage = () => {
               <span className = {style.cntV}>{`${waitCnt ? waitCnt : 0} 명`}</span>
             </div>
           </div>
+          {waitImg && (
+            <div className={style.waitImageContainer}>
+              <span className={style.imageTitle}>현재 대기 상황</span>
+              <img 
+                src={`data:image/png;base64,${waitImg}`} 
+                alt="대기 이미지" 
+                className={style.waitImage}
+              />
+            </div>
+          )}
         </div>
       ) : (
         // 판매 마감 시 표시
