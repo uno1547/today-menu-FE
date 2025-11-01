@@ -10,6 +10,7 @@ import { io } from "socket.io-client";
 const CurrentInfoPage = () => {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [curCnt, setCurCnt] = useState(0);
+  const [waitImg, setWaitImg] = useState(null)
   const [waitCnt, setWaitCnt] = useState(0);
   const [isSellingActive, setIsSellingActive] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -51,9 +52,11 @@ const CurrentInfoPage = () => {
       setCurCnt(currentQuantity);
     })
     newSocket.on("waitCnt-update", (count) => { // waitCnt 업데이트용 이벤트
-      const { currentWaitCnt } = count;
+      const { currentWaitCnt, imageB64 } = count;
       setWaitCnt(currentWaitCnt);
+      setWaitImg(imageB64);
       console.log("대기 인원 수:", currentWaitCnt);
+      console.log("대기 이미지:", imageB64);
     });
     // 컴포넌트가 마운트될 때 소켓 연결
     // console.log('effect');
@@ -85,6 +88,7 @@ const CurrentInfoPage = () => {
             <div className={style.wait3}>
               <span className={style.cntH}>대기 인원 수</span>
               <span className = {style.cntV}>{`${waitCnt ? waitCnt : 0} 명`}</span>
+              {waitImg && <img src={`data:image/png;base64,${waitImg}`} alt="대기 이미지" style={{ width: '200px', marginTop: '10px' }} />}
             </div>
           </div>
         </div>
