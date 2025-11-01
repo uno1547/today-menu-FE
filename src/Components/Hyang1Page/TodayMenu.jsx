@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import style from "./TodayMenu3.module.css"
 
 import { Link } from "react-router-dom"
+const API_BASE_URL = import.meta.env.VITE_API_URL
 
 const time = ["아침", "점심", "저녁"]
 
@@ -11,18 +12,46 @@ const dummyData = {
   저녁 : { type : "", items : [ {name : "김치볶음밥", category : "밥"}, {name : "계란국", category : "국"}, {name : "김치", category : "반찬"}, {name : "미역줄기", category : "반찬"} ], price : 6500 },
 }
 
+const indexMap = {0 : "bf", 1 : "lc", 2 : "dn"}
+
+/*
+
+{
+  "bf": {
+    "mains": ["백미밥", "된장국"],
+    "sides": ["김치", "계란후라이"]
+  },
+  "lc": {
+    "mains": ["흑미밥", "콩나물국"],
+    "sides": ["제육볶음", "쏘야볶음", "미역초무침"]
+  },
+  "dn": {
+    "mains": ["백미밥", "떡만두국"],
+    "sides": ["동그랑땡", "배추김치"]
+  }
+}
+
+*/
+
+
 const TodayMenu = () => {
   const [datas, setDatas] = useState({})
   const [timeIdx, setTimeIdx] = useState(0)
   // console.log(timeIdx);
   const getTodayMenu = async () => {
+    const date = new Date()
+    const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+    console.log(formattedDate);
+
     try {
-      const response = await fetch("http://localhost:8080/restaurants/h1/today-menus")
+      const response = await fetch(`${API_BASE_URL}/api/get-menu-by-date?date=${formattedDate}`)
       if(!response.ok) {
         console.log('오늘의 메뉴 조회 실패!')
         return
       }
-      const  menus  = await response.json()
+      const { data }  = await response.json()
+      console.log(data.menus);
+      setDatas(data.menus)
       /*
       { 
         아침 : { type : "", items : [{name : , category : }, {name : , category : }, {name : , category :}], price : 6500 },
@@ -30,17 +59,17 @@ const TodayMenu = () => {
         저녁 : { type : "", items : [{name : , category : }, {name : , category : }, {name : , category :}], price : 6500 }
       }
       */
-      setDatas(menus)
+      // setDatas(menus)
     } catch (err) {
       console.error(err)
     }
   }
   useEffect(() => {
     // console.log('데이터불러오기!!');
-    // getTodayMenu()
+    getTodayMenu()
 
     //// 테스트용 더미데이터 얘 주석처리하고 위에 getTodayMenu로 
-    setDatas(dummyData)
+    // setDatas(dummyData)
     ////
   }, [])
   return (
@@ -55,9 +84,12 @@ const TodayMenu = () => {
         {/* {dummyData[time[timeIdx]].items.filter(menu => menu.category === "밥").map(menu => <div key={menu.name}>{menu.name}</div>)}
         {dummyData[time[timeIdx]].items.filter(menu => menu.category === "국").map(menu => <div key={menu.name}>{menu.name}</div>)}
         {dummyData[time[timeIdx]].items.filter(menu => menu.category === "반찬").map(menu => <div key={menu.name}>{menu.name}</div>)} */}
-        {datas[time[timeIdx]]?.items.filter(menu => menu.category === "밥").map(menu => <div key={menu.name} className={style.menuText}>{menu.name}</div>)}
+        {datas[indexMap[timeIdx]]?.mains.map(menu => <div key={menu} className={style.menuText}>{menu}</div>)}
+        {datas[indexMap[timeIdx]]?.sides.map(menu => <div key={menu} className={style.menuText}>{menu}</div>)}
+
+        {/* {datas[time[timeIdx]]?.items.filter(menu => menu.category === "밥").map(menu => <div key={menu.name} className={style.menuText}>{menu.name}</div>)}
         {datas[time[timeIdx]]?.items.filter(menu => menu.category === "국").map(menu => <div key={menu.name} className={style.menuText}>{menu.name}</div>)}
-        {datas[time[timeIdx]]?.items.filter(menu => menu.category === "반찬").map(menu => <div key={menu.name} className={style.menuText}>{menu.name}</div>)}
+        {datas[time[timeIdx]]?.items.filter(menu => menu.category === "반찬").map(menu => <div key={menu.name} className={style.menuText}>{menu.name}</div>)} */}
       </div>
       {datas["아침"] && (timeIdx == 0) && <Link to="current-info" style={{fontWeight : "bold", color : "var(--app-accent-dark)", padding : "5px"}}>실시간 수량보러가기</Link>}
       {/* {datas["아침"] && (timeIdx == 0) && <Link to="current-info" style={{fontWeight : "bold", color : "var(--text-primary)", padding : "5px"}}>실시간 수량보러가기</Link>} */}
