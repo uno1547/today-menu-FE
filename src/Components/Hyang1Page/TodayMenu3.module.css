@@ -9,7 +9,7 @@
 .wrapper {
   font-family: 'Noto Sans KR', sans-serif;
   max-width: 550px;
-  margin: 2rem auto;
+  margin: 1.5rem auto;
   padding: 1.5rem;
   background-color: #91e3ff; /* ★ 수정된 배경 */
   background-color: var(--app-bg-light); /* ★ 수정된 배경 */

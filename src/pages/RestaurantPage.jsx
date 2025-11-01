@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 import Store from "../Components/RestaurantPage/Store.jsx";
 
 import restaurantStyle from "./RestaurantTestPage.module.css";
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const name = {
   h1 : "향설생활관1",
@@ -28,45 +29,50 @@ const data = [
 ]
 
 const RestaurantPage = () => {
-  // console.log('레스토랑 렌더링!');
+  console.log('레스토랑 렌더링!');
   const [stores,setStores]=useState([]);
-  const {restaurant} = useParams();
+  const { building } = useParams();
   const [error,setError] =useState(null)
- 
- 
+
+  console.log(building);
   // console.log(restaurant+"의 식당입니다.");
   // console.log(name[restaurant]);
-  useEffect(()=>{
-  
-  const fetchData = async ()=>{
-    try{
-    const respone= await fetch(`http://localhost:8080/restaurants/${restaurant}/stores`)
-     if(!respone.ok) throw new Error("서버 오류 발생");
-    
-     const result = await respone.json();
-     console.log(result);
-     setStores(result.stores);
-    } catch(err){
-     setError(err.message || "에러 발생");
-    }
-  } 
+  useEffect(() => {
+    console.log('effect!! building변경');
+    const fetchData = async ()=>{
+      try{
+      const respone= await fetch(`${API_BASE_URL}/api/get-stores?building=${building}`);
+      if(!respone.ok) throw new Error("서버 오류 발생");
+      const { stores } = await respone.json();
+      console.log(stores);
+      setStores(stores);
+      // setStores(result.stores);
+      } catch(err){
+      setError(err.message || "에러 발생");
+      }
+    } 
 
-  //  fetchData()
+    fetchData()
 
-  ////// 더미데이터로테스트용 나중에 지우고 위에 fetchData()만 주석해제해주면됌
-  const storesList = data.filter(store => store.b == restaurant)
-  // console.log(storesList);
-  setStores(storesList)
-  // //////
-  }, [restaurant])
+    ////// 더미데이터로테스트용 나중에 지우고 위에 fetchData()만 주석해제해주면됌
+    // const storesList = data.filter(store => store.b == restaurant)
+    // console.log(storesList);
+    // setStores(storesList)
+    // ///////
+  }, [building])
   
   return (
     <>
-      <h2 className={restaurantStyle["cafeteria-name"]}>{name[restaurant]}</h2>
+      <h2 className={restaurantStyle["cafeteria-name"]}>{name[building]}</h2>
       <div className={restaurantStyle["grid-container"]}>
-        {stores?.map((store)=>{
+        {/* {stores?.map((store)=>{
           return <Store key={store.name} store = {store}/>
-        })}
+        })} */}
+        {
+          stores?.map(store => {
+            return <Store key={store.name} store={store} />
+          })
+        }
       </div>
     </>
   )
