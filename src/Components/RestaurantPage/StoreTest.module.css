@@ -40,6 +40,7 @@
   width: 100%;
   height: 180px; /* 고정된 이미지 높이 */
   object-fit: cover; /* 이미지가 잘리지 않고 채워지도록 */
+  object-fit: scale-down; /* 이미지가 잘리지 않고 채워지도록 */
   display: block; /* 이미지 하단 여백 제거 */
   border-bottom: 1px solid var(--app-border); /* 이미지와 텍스트 분리 */
 }

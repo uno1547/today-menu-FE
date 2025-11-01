@@ -27,7 +27,8 @@
   font-weight: 700;
   color: var(--text-primary);
   text-align: center;
-  margin-bottom: 2.5rem; /* 아래 그리드와의 간격 */
+  /* text-align: left; */
+  margin-bottom: 1.5rem; /* 아래 그리드와의 간격 */
   letter-spacing: -0.03em; /* 글자 간격 살짝 좁게 */
 }
 

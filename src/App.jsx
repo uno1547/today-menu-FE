@@ -32,7 +32,8 @@ function App() {
         }>
           <Route path='/' element={<Navigate to="/restaurants/h1" replace />} />
           <Route path='/restaurants/h1' element={<Hyang1Page/>} />
-          <Route path='/restaurants/:restaurant' element={<RestaurantPage />} />
+          {/* <Route path='/restaurants/:restaurant' element={<RestaurantPage />} /> */}
+          <Route path='/restaurants/:building' element={<RestaurantPage />} />
         </Route>
         <Route element = {
           <div className={style.inner}>
